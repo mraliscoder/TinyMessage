@@ -29,10 +29,3 @@ publishing {
         }
     }
 }
-
-
-tasks {
-    jar {
-        destinationDirectory.set(file("D:\\Pelit\\Hytale Launcher\\HytaleData\\UserData\\Mods"))
-    }
-}
