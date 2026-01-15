@@ -1,7 +1,7 @@
 {
   "Group": "Zoltus",
   "Name": "TinyMessage",
-  "Version": "v1.0.1",
+  "Version": "2.0.0",
   "Description": "Api for coloring messages!",
   "Authors": [
     {

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "fi.sulku.hytale"
-version = "1.0.1-SNAPSHOT"
+version = "1.0.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -27,5 +27,12 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["java"])
         }
+    }
+}
+
+
+tasks {
+    jar {
+        destinationDirectory.set(file("D:\\Pelit\\Hytale Launcher\\HytaleData\\UserData\\Mods"))
     }
 }
