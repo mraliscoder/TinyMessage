@@ -16,18 +16,22 @@ TinyMsg allows you to use simple tags to create gradients, hex colors, clickable
 
 ---
 
-## Installation
+## Installation for server owners:
+
+### Download the TinyMsg jar
+Download the latest TinyMsg jar from the releases page and place it in your server's `mods` folder.
+
+
+## Installation for developers:
 
 Temporary until hytale plugin repository is available.
 Create libs folder in your plugin directory and place the TinyMsg jar file there.
 project/libs/TinyMessage-1.0.1-SNAPSHOT.jar
 
-
-
 ### For Gradle
 ```kotlin
 dependencies {
-    implementation(files("libs/tinymessage-1.0.1-SNAPSHOT.jar"))
+    compileOnly(files("libs/tinymessage-1.0.1-SNAPSHOT.jar"))
 }
 ```
 
@@ -37,54 +41,10 @@ dependencies {
     <groupId>fi.sulku.hytale</groupId>
     <artifactId>tinymessage</artifactId>
     <version>v1.0.1</version>
-    <scope>system</scope>
+    <scope>provided</scope>
     <systemPath>${project.basedir}/libs/tinymessage-1.0.1-SNAPSHOT.jar</systemPath>
 </dependency>
 ```
-
-### Shading (Recommended)
-
-**Gradle:**
-```kotlin
-plugins {
-    id("com.gradleup.shadow") version "9.2.2"
-}
-
-tasks.shadowJar {
-    relocate("fi.sulku.hytale.tinymessage", "your.plugin.package.libs.tinymessage")
-}
-```
-
-**Gradle:**
-```xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <version>3.6.1</version>
-    <executions>
-        <execution>
-            <phase>package</phase>
-            <goals>
-                <goal>shade</goal>
-            </goals>
-            <configuration>
-                <artifactSet>
-                    <includes>
-                        <include>fi.sulku.hytale:tinymessage</include>
-                    </includes>
-                </artifactSet>
-                <relocations>
-                    <relocation>
-                        <pattern>fi.sulku.hytale.tinymessage</pattern>
-                        <shadedPattern>your.plugin.package.libs.tinymessage</shadedPattern>
-                    </relocation>
-                </relocations>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-```
-
 
 ---
 
