@@ -21,20 +21,27 @@ TinyMsg allows you to use simple tags to create gradients, hex colors, clickable
 ### For Gradle
 ```kotlin
 repositories {
-    mavenLocal() // or your repository
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
-    implementation("fi.sulku.hytale:TinyMessage:1.0-SNAPSHOT")
+    implementation("com.github.Zoltus:TinyMessage:v1.0")
 }
 ```
 
 ### For Maven
 ```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
 <dependency>
-    <groupId>fi.sulku.hytale</groupId>
+    <groupId>com.github.Zoltus</groupId>
     <artifactId>TinyMessage</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1.0</version>
 </dependency>
 ```
 
@@ -48,8 +55,31 @@ plugins {
 }
 
 tasks.shadowJar {
-    relocate("fi.sulku.hytale.TinyMsg", "your.plugin.package.libs.TinyMsg")
+    relocate("fi.sulku.hytale.tinymessage", "your.package.libs.tinymessage")
 }
+```
+
+**Maven:**
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>3.6.1</version>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals><goal>shade</goal></goals>
+            <configuration>
+                <relocations>
+                    <relocation>
+                        <pattern>fi.sulku.hytale.tinymessage</pattern>
+                        <shadedPattern>your.package.libs.tinymessage</shadedPattern>
+                    </relocation>
+                </relocations>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
 ```
 
 ---
