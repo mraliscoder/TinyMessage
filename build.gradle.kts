@@ -28,4 +28,11 @@ publishing {
             from(components["java"])
         }
     }
+    repositories {
+        maven {
+            name = "cowr"
+            url = uri("https://maven.cowr.org/releases")
+            credentials(PasswordCredentials::class)
+        }
+    }
 }
